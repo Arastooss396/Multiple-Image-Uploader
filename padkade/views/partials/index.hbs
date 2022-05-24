@@ -1,0 +1,60 @@
+
+
+{{!-- section --}}
+    <section class="section my-4"> 
+        <div class="container text-center">
+          <div class="title py-5">
+           <h1>This is not hard at all!</h1>   
+           <p class="subtitle">Upload Images to the <strong>Server</strong> </p>
+          </div>
+        
+          <div class="row justify-content-center">
+            <div class="col-4">
+              <form action="/uploadmultiple" enctype="multipart/form-data" method="POST" >
+                <div class="row">
+                  <div class="col-8">
+                    <input type="file" class="form-control" name="images" id="fromFile" multiple >
+                  </div>
+                  <div class="col-2">
+                    <input type="submit" class="btn btn-warning" value="Upload Images" >
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div> 
+
+            {{!-- display images --}}
+                <section class="mt-5">
+                    <div class="row">
+
+                          {{#each images}}
+                            
+                              
+                                {{!-- bootstrap cards --}}
+                                  <div class="col-3">
+                                    <div class="card h-100" style="width: 18rem;">
+                                        <img src='http://localhost:3001/image/{{this.newFileName}}' class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                          <h5 class="card-title">Some Random Podcast</h5>
+                                          <p class="card-text">Lorem ipsum , wingardium leviosa.</p>
+                                          <form action="/delete" enctype="multipart/form-data" method="POST">
+                                            <input type="hidden" name="id" value="{{this._id}}">
+                                            <input type="submit" class="btn btn-primary" value='Delete'/>
+                                            </form>
+                                            <a href="#" class="btn btn-primary">Edit</a>
+                                        </div>
+                                      </div>
+                                  </div>
+                                {{!-- /bootstrap cards --}}
+                              
+                            
+                          {{/each}}                            
+                    </div>
+                </section>
+
+
+            {{!-- /display images --}}
+
+
+        </div>
+    </section>
