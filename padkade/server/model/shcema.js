@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 
 const uploadSchema = new mongoose.Schema({
-    _id : mongoose.Types.ObjectId,
+    __id : mongoose.Types.ObjectId,
     
     filename:{
         type:String,
