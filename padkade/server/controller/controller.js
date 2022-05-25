@@ -6,6 +6,8 @@ const fs = require("fs");
 const os = require('os');
 const path = require('path');
 
+const mongoose = require('mongoose');
+
 
 exports.home = async (req,res) =>{
     // console.time('geting data')
@@ -39,6 +41,7 @@ let imgArray = files.map((file, index)=>{
     img.pipe(writeStream)
 
     return {
+        __id:new mongoose.Types.ObjectId,
         filename: files[index].originalname,
         contentType : files[index].mimetype,
         newFileName : 'image-' + index + '-' + time + '.' + temp
@@ -81,8 +84,8 @@ exports.delete =async(req,res,next)=>{
     //find files in database via id 
     let result = await UploadModel.findById(req.body.id)
     //fs.delete and remove the files
-    fs.rmSync('./uploads2/'+result.newFileName)
+    fs.rmSync('./uploads2/'+ result.newFileName)
     //find by id and delete the actual files on the server
-    await UploadModel.findByIdAndDelete(id)
+    await UploadModel.findByIdAndDelete()
     res.redirect('/')
 }
