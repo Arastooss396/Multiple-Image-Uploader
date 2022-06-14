@@ -4,8 +4,9 @@
     <section class="section my-4"> 
         <div class="container text-center">
           <div class="title py-5">
-           <h1>Thinking about commiting suicide!</h1>   
-           <p class="subtitle">Upload Images to the <strong>Server</strong> </p>
+            <h1>Image Uploader!</h1>
+           <h1>This is a project to show my coding capabilities</h1>   
+           <p class="subtitle">Upload Images to the <strong>Server!</strong> </p>
           </div>
         
           <div class="row justify-content-center">
@@ -40,8 +41,15 @@
                                           <form action="/delete" method="POST">
                                             <input type="hidden" name="id" value="{{this._id}}">
                                             <input type="submit" class="btn btn-primary" value='Delete'/>
-                                            </form>
-                                            <a href="#" class="btn btn-primary">Edit</a>
+                                          
+                                          </form>
+                                          <form action="/edit" enctype="multipart/form-data" method="POST">
+                                            <input type="hidden" name="id" value="{{this._id}}">
+                                            <input type="file" class="form-control" name="images" id="fromFile" >
+                                            <input type="submit" class="btn btn-primary" value='Edit'/>
+                                          
+                                          </form>
+                                            
                                             {{!-- need to write a function to pop the block with images --}}
                                         </div>
                                       </div>
